@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- UserDao class : findById() method와 연동 -->
+<mapper namespace="com.springmvc4maven.dao.users.UserMapper">
+	<!-- resultType: mybatis-config-test.xml file의 alias 사용 -->
+	<select id="findById" resultType="com.springmvc4maven.domain.users.User">
+		select * from USERS 
+		where userId = #{userId}
+	</select>
+	
+	<insert id="create">
+		insert into USERS
+		values (#{userId},#{password},#{name},#{email})
+	</insert>
+	
+	<update id="update">
+		update USERS set 
+		password = #{password}, name = #{name}, email = #{email} where userId = #{userId}
+	</update>
+</mapper>

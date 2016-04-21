@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- renderer.setMessageProvider(new HelloWorldMessageProvider());
+		renderer.render(); HelloWorldMessageProvider를 생성하는 부분을 대체한 설정 -->
+	
+	<bean id="messageProvider" class="com.springmvc4maven.di.HelloWorldMessageProvider" /> 
+	
+	<!--  <bean id="messageProvider" class="com.springmvc4maven.di.HiWorldMessageProvider" /> -->
+		
+	<!-- 
+	com.springmvc4maven.di: MessageRenderer.java -> MessageRenderer renderer = new MessageRenderer(); 
+	Message Renderer를 생성하는 부분을 대체한 설정
+	 -->
+	<bean id="messageRenderer" class="com.springmvc4maven.di.MessageRenderer" >
+	<!-- MessageRenderer와 MessageProvider를 서로 연결하는 부분을 설정해야함. -->
+		<property name="messageProvider" ref="messageProvider"/>
+	</bean>
+	
+	
+
+</beans>

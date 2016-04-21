@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- typeAliases는 순서가 중요. mybatis-3-config.dtd 문서 참조 -->
+	<typeAliases>
+		<typeAlias alias="User" type="com.springmvc4maven.domain.users.User" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<!-- Connection Pooling -->
+			<dataSource type="POOLED">
+				<property name="driver" value="org.h2.Driver" />
+				<property name="url" value="jdbc:h2:~/springmvc4maven" />
+				<property name="username" value="sa" />
+				<property name="password" value="" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	
+	
+
+	<!-- UserMapper.xml에 mapping -->
+	<mappers>
+		<mapper resource="com/springmvc4maven/dao/users/UserMapper.xml" />
+		<mapper resource="com/springmvc4maven/dao/users/AccountMapper.xml" />
+	</mappers>
+</configuration>

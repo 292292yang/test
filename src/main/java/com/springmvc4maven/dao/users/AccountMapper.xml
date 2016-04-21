@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- UserDao class : findById() method와 연동 -->
+<mapper namespace="com.springmvc4maven.dao.users.AccountMapper">
+
+	<!--<resultMap id="" type="">-->
+
+	<!--</resultMap>-->
+
+	<!-- resultType: mybatis-config-test.xml file의 alias 사용 -->
+	<select id="select" resultType="com.springmvc4maven.domain.users.AccountDO">
+		select id,name,num from t_account
+		where id = #{id}
+	</select>
+	
+	<insert id="create" parameterType="com.springmvc4maven.domain.users.AccountDO">
+		insert into t_account(name,num)
+		values (#{name},#{num})
+	</insert>
+	
+	<update id="update" parameterType="com.springmvc4maven.domain.users.AccountDO">
+		update t_account set
+		name = #{name}, num = #{num} where id = #{id}
+	</update>
+</mapper>
